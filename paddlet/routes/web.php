@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PaddletController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::post('login', [ 'as' => 'login', 'uses' => 'LoginController@do']);
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/paddlets', PaddletController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

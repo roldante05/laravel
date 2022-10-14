@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('login', [ 'as' => 'login', 'uses' => 'LoginController@do']);
 
-Route::get('/paddlets', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 

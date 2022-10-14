@@ -12,13 +12,13 @@
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
-                            <span id="card_title">
+                            <h2 class="mb-0" id="card_title">
                                 {{ __('Paddlet') }}
-                            </span>
+                            </h2>
 
                              <div class="">
-                                <a href="{{ route('paddlets.create') }}" class="btn btn-primary btn-sm "  data-placement="left">
-                                  {{ __('Crear Paddlet') }}
+                                <a style="font-size: 20px ;  " href="{{ route('paddlets.create') }}" class="mb-0 btn btn-primary btn-sm "  data-placement="left">
+                                  {{ __('Crear') }}
                                   <i class="fa-solid fa-circle-plus"></i>
                                 </a>
                               </div>
@@ -34,17 +34,18 @@
                     <div class="row">
                         <div class="d-flex justify-content-center flex-wrap">
                                     @foreach ($paddlets as $paddlet)
-                                        <div class="card col-sm-3 mx-2 mt-3">
-                                            <div class="my-1 ms-2">{{ $paddlet->user }}</div>
-											<div class="text-center py-4" >{{ $paddlet->comment }}</div>
+                                        <div style="height: 150px ;" class="card col-sm-3 mx-2 mt-3 pb-3 text-white bg-dark">
+                                            <div style="font-size: 17px ;" class="my-1 ms-2 d-flex justify-content-between">{{ $paddlet->user }}  <form action="{{ route('paddlets.destroy',$paddlet->id) }}" method="POST">  <button type="submit" class="btn btn-light btn-sm"><i class="fa fa-fw fa-trash"></i></button>   <a class="btn btn-sm btn-light me-2" href="{{ route('paddlets.edit',$paddlet->id) }}"><i class="fa-solid fa-pen-to-square"></i></a> @csrf
+                                                @method('DELETE') </form> </div>
+											<div style="font-size: 18px;" class="text-justify px-2 py-3" >{{ $paddlet->comment }}</div>
                                             
                                             
                                             <form action="{{ route('paddlets.destroy',$paddlet->id) }}" method="POST">
                                                 <!-- <a class="btn btn-sm btn-primary " href="{{ route('paddlets.show',$paddlet->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a> -->
-                                                <a class="btn btn-sm btn-success" href="{{ route('paddlets.edit',$paddlet->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                              
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>
+                                              
                                             </form>
                                         </div>
                                     @endforeach

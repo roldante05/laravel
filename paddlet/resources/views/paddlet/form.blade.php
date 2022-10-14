@@ -3,14 +3,20 @@
         
         <div class="form-group">
             {{ Form::label('Usuario') }}
-            {{ Form::text('user', $paddlet->user, ['class' => 'form-control' . ($errors->has('user') ? ' is-invalid' : ''), 'placeholder' => 'User']) }}
+            {{ Form::text('user', $paddlet->user, ['class' => 'form-control' . ($errors->has('user') ? ' is-invalid' : ''), 'placeholder' => 'Tu nombre']) }}
             {!! $errors->first('user', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Comentar') }}
-            {{ Form::text('comment', $paddlet->comment, ['class' => 'form-control' . ($errors->has('comment') ? ' is-invalid' : ''), 'placeholder' => 'Comment']) }}
+            {{ Form::textarea ('comment', $paddlet->comment, ['class' => 'form-control' . ($errors->has('comment') ? ' is-invalid' : ''), 'placeholder' => 'Escribe una nota']) }}
             {!! $errors->first('comment', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <style>
+            textarea{
+                resize: none;
+                height: 129px;
+            }
+        </style>
 
     </div>
     <div class="box-footer">

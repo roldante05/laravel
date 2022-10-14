@@ -6,12 +6,12 @@
 
 @section('content')
     <section class="content container-fluid">
-        <div class="">
-            <div class="col-md-12">
+        <div class="row">
+            <div class="d-flex justify-content-center">
 
                 @includeif('partials.errors')
 
-                <div class="card card-default">
+                <div class="card card-default col-md-9 bg-dark text-white">
                     <div class="card-header">
                         <span class="card-title">Update Paddlet</span>
                     </div>

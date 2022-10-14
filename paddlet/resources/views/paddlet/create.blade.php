@@ -11,7 +11,7 @@
 
                 @includeif('partials.errors')
 
-                <div class="card card-default col-md-9">
+                <div class="card card-default col-md-9 bg-dark text-white">
                     <div class="card-header">
                         <span class="card-title">Crear Paddlet</span>
                     </div>

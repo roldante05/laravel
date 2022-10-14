@@ -18,7 +18,7 @@
 
                              <div class="">
                                 <a href="{{ route('paddlets.create') }}" class="btn btn-primary btn-sm "  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear Paddlet') }}
                                   <i class="fa-solid fa-circle-plus"></i>
                                 </a>
                               </div>

@@ -26,7 +26,7 @@ background: linear-gradient(0deg, rgba(195,34,61,1) 0%, rgba(238,92,19,1) 100%);
 </style>
 <body  class="">
     <div d="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -36,14 +36,14 @@ background: linear-gradient(0deg, rgba(195,34,61,1) 0%, rgba(238,92,19,1) 100%);
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    Left Side Of Navbar
                     <ul class="navbar-nav me-auto">
 
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+                    Right Side Of Navbar
                     <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
+                        Authentication Links
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -78,7 +78,7 @@ background: linear-gradient(0deg, rgba(195,34,61,1) 0%, rgba(238,92,19,1) 100%);
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> -->
 
         <main class="py-4">
             @yield('content')

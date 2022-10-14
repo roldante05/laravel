@@ -18,7 +18,7 @@
 
                              <div class="">
                                 <a href="{{ route('paddlets.create') }}" class="btn btn-primary btn-sm "  data-placement="left">
-                                  <!-- {{ __('Create New') }} -->
+                                  {{ __('Create New') }}
                                   <i class="fa-solid fa-circle-plus"></i>
                                 </a>
                               </div>
@@ -32,7 +32,7 @@
 
                 </div> 
                     <div class="row">
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center flex-wrap">
                                     @foreach ($paddlets as $paddlet)
                                         <div class="card col-sm-3 mx-2 mt-3">
                                             <div class="my-1 ms-2">{{ $paddlet->user }}</div>

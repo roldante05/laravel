@@ -12,12 +12,20 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+    <link href="../../fontawesome/css/all.min.css" rel="stylesheet" />
+    <link href="../../fontawesome/css/fontawesome.min.css" rel="stylesheet" />
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body>
-    <div id="app">
+<style>
+    body{
+       min-height: 100vh;
+       background: rgb(195,34,61);
+background: linear-gradient(0deg, rgba(195,34,61,1) 0%, rgba(238,92,19,1) 100%);
+    }
+</style>
+<body  class="">
+    <div d="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

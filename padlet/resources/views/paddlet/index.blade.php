@@ -13,7 +13,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <h2 class="mb-0" id="card_title">
-                                {{ __('Paddlet') }}
+                                {{ __('Padlet') }}
                             </h2>
 
                              <div class="">

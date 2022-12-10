@@ -28,9 +28,7 @@ class Pedido extends Model
       public function cargarDesdeRequest($request)
       {
           $this->idpedido = $request->input('id') != "0" ? $request->input('id') : $this->idpedido;
-          if($request->input('txtMes') && $request->input('txtMes') && $request->input('txtDia')){
-              $this->fecha = $request->input('txtAnio') . "-" . $request->input('txtMes') . "-" . $request->input('txtDia');
-          }
+          $this->fecha = $request->input('txtFecha');
           $this->descripcion = $request->input('txtDescripcion');
           $this->total = $request->input('txtTotal');
           $this->fk_idsucursal = $request->input('lstSucursal');
@@ -90,7 +88,7 @@ class Pedido extends Model
                     A.fk_idsucursal
                     A.fk_idcliente
                     A.fk_idestado
-                  FROM $this->table A ORDER BY A.fecha";
+                  FROM $this->table  ORDER BY idpedido";
           $lstRetorno = DB::select($sql);
           return $lstRetorno;
       }
@@ -100,13 +98,13 @@ class Pedido extends Model
       {
           $sql = "SELECT
                   idpedido,
-                  fecha, 
-          descripcion, 
-        total', 
-          fk_idsucursal,
-          fk_idcliente,
-          fk_idestado 
-                  FROM $this->table WHERE idpedido = $idpedido";
+                  fecha,
+                  descripcion,
+                  total,
+                  fk_idsucursal,
+                  fk_idcliente,
+                  fk_idestado
+                  FROM pedidos WHERE idpedido = $idpedido";
           $lstRetorno = DB::select($sql);
   
           if (count($lstRetorno) > 0) {

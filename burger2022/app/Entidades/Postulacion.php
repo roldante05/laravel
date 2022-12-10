@@ -38,11 +38,11 @@ class Postulacion extends Model
       public function insertar()
     {
         $sql = "INSERT INTO $this->table (
-         'nombre', 
-          'apellido', 
-          'celular', 
-          'correo',
-          'curriculum'
+         nombre, 
+          apellido, 
+          celular, 
+          correo,
+          curriculum
             ) VALUES (?, ?, ?, ?, ?);";
         $result = DB::insert($sql, [
             $this->nombre,

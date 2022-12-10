@@ -49,27 +49,7 @@ if (isset($msg)) {
             
             <div class="form-group col-lg-6">
                 <label for="txtFecha" class="d-block">Fecha:*</label>
-                <select class="form-control d-inline"  name="txtDia" id="txtDia" style="width: 80px" required>
-                    <option selected="" disabled="">DD</option>
-                   <option selected>  </option>
-                  
-                            <option>  </option>
-                   
-                </select>
-                <select class="form-control d-inline"  name="txtMes" id="txtMes" style="width: 80px" required>
-                    <option selected="" disabled="">MM</option>
-                   <option selected> </option>
-                                                 
-                            <option> </option>
-                      
-                </select>
-                <select class="form-control d-inline"  name="txtAnio" id="txtAnio" style="width: 100px" required>
-                    <option selected="" disabled="">AAAA</option>
-                   <option selected>  </option>
-                        
-                            <option>  </option>
-                     
-                </select>
+                <input type="date" id="txtFecha" name="txtFecha" class="form-control">
             </div>
             
             <div class="form-group col-lg-6">

@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Entidades\Cliente; 
+use App\Entidades\Categoria; 
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
 use Illuminate\Http\Request;
 
 require app_path() . '/start/constants.php';
 
-class ControladorCliente extends Controller
+class ControladorCategoria extends Controller
 {
     public function nuevo()
     {
-        $titulo = "Nuevo cliente";
-                return view('cliente.cliente-nuevo', compact('titulo'));
+        $titulo = "Nueva Categoria";
+                return view('categoria.categoria-nuevo', compact('titulo'));
     } 
 
 }

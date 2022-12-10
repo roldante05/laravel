@@ -31,10 +31,10 @@ class Sucursal extends Model
       public function insertar()
     {
         $sql = "INSERT INTO $this->table (
-          'nombre', 
-          'telefono', 
-          'direccion', 
-          'linkmapa'
+          nombre, 
+          telefono, 
+          direccion, 
+          linkmapa
             ) VALUES (?, ?, ?, ?);";
         $result = DB::insert($sql, [
             $this->nombre,

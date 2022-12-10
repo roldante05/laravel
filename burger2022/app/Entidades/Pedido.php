@@ -25,15 +25,30 @@ class Pedido extends Model
   
       ];
 
+      public function cargarDesdeRequest($request)
+      {
+          $this->idpedido = $request->input('id') != "0" ? $request->input('id') : $this->idpedido;
+          if($request->input('txtMes') && $request->input('txtMes') && $request->input('txtDia')){
+              $this->fecha = $request->input('txtAnio') . "-" . $request->input('txtMes') . "-" . $request->input('txtDia');
+          }
+          $this->descripcion = $request->input('txtDescripcion');
+          $this->total = $request->input('txtTotal');
+          $this->fk_idsucursal = $request->input('lstSucursal');
+          $this->fk_idcliente = $request->input('lstCliente');
+          $this->fk_idestado = $request->input('lstEstado');
+         
+         
+      }
+
       public function insertar()
     {
         $sql = "INSERT INTO $this->table (
-         'fecha', 
-          'descripcion', 
-          'total', 
-          'fk_idsucursal',
-          'fk_idcliente',
-          'fk_idestado' 
+         fecha, 
+          descripcion, 
+        total, 
+          fk_idsucursal,
+          fk_idcliente,
+          fk_idestado 
             ) VALUES (?, ?, ?, ?, ?, ?);";
         $result = DB::insert($sql, [
             $this->fecha,

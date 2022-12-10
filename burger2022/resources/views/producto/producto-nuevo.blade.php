@@ -62,13 +62,11 @@ if (isset($msg)) {
                         <label>Categoria: *</label>
                         <select name="lstCategoria" id="lstCategoria" class="form-control selectpicker" data-live-search="true" required>
                             <option disabled selected>Seleccionar</option>
-                            @foreach($aCategorias as $item)
-                                @if($item->idcategoria == $producto->fk_idcategoria)
-                                    <option selected value=""></option>
-                                @else
+                      
+                                 <option selected value=""></option>
+                              
                                     <option value=""></option>
-                                @endif
-                            @endforeach
+                           
                         </select>
                 </div>
                 <div class="form-group col-lg-6">

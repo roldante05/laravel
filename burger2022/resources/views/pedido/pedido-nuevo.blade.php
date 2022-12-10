@@ -51,33 +51,24 @@ if (isset($msg)) {
                 <label for="txtFecha" class="d-block">Fecha:*</label>
                 <select class="form-control d-inline"  name="txtDia" id="txtDia" style="width: 80px" required>
                     <option selected="" disabled="">DD</option>
-                    @for($i=1; $i <= 31; $i++)
-                        @if($pedido->fecha != "" && $i == date_format(date_create($pedido->fecha), "d"))
-                            <option selected> {{$i}} </option>
-                        @else
-                            <option> {{$i}} </option>
-                        <@endif
-                    @endfor
+                   <option selected>  </option>
+                  
+                            <option>  </option>
+                   
                 </select>
                 <select class="form-control d-inline"  name="txtMes" id="txtMes" style="width: 80px" required>
                     <option selected="" disabled="">MM</option>
-                    @for($i=1; $i <= 12; $i++)
-                        @if($pedido->fecha != "" && $i == date_format(date_create($pedido->fecha), "m"))
-                            <option selected> {{$i}} </option>
-                        @else                            
-                            <option> {{$i}} </option>
-                        @endif
-                    @endfor
+                   <option selected> </option>
+                                                 
+                            <option> </option>
+                      
                 </select>
                 <select class="form-control d-inline"  name="txtAnio" id="txtAnio" style="width: 100px" required>
                     <option selected="" disabled="">AAAA</option>
-                    @for($i=1900; $i <= date("Y"); $i++)
-                        @if($pedido->fecha != "" && $i == date_format(date_create($pedido->fecha), "Y"))
-                            <option selected> {{$i}} </option>
-                        @else 
-                            <option> {{$i}} </option>
-                        @endif
-                    @endfor
+                   <option selected>  </option>
+                        
+                            <option>  </option>
+                     
                 </select>
             </div>
             
@@ -85,48 +76,39 @@ if (isset($msg)) {
                 <label>Sucursal: *</label>
                 <select name="lstSucursal" id="lstSucursal" class="form-control"  required>
                     <option disabled selected>Seleccionar</option>
-                    @foreach($aSucursales as $item)
-                        @if($pedido->fk_idsucursal == $item->idsucursal)
-                            <option selected value=" {{ $item->idsucursal }} "> {{ $item->nombre }} </option>
-                        @else
-                            <option value=" {{ $item->idsucursal }} "> {{ $item->nombre }} </option>
-                        @endif
-                    @endforeach
+                         <option selected value="  ">  </option>
+                       
+                            <option value="  "> </option>
+                       
                 </select>
             </div>
             <div class="form-group col-lg-6">
                 <label>Cliente: *</label>
                 <select name="lstCliente" id="lstCliente" class="form-control"  required>
                     <option disabled selected>Seleccionar</option>
-                    @foreach($aClientes as $item)
-                        @if($pedido->fk_idcliente == $item->idcliente)
-                            <option selected value=" {{ $item->idcliente }} "> {{ $item->nombre }} {{ $item->apellido}}</option>
-                        @else
-                            <option value="{{ $item->idcliente}}">{{ $item->nombre}} {{ $item->apellido}}</option>
-                        @endif
-                    @endforeach
+                  <option selected value="  "> </option>
+                        
+                            <option value=""></option>
+                      
                 </select>
             </div>
             <div class="form-group col-lg-6">
                 <label>Estado: *</label>
                 <select name="lstEstado" id="lstEstado" class="form-control"  required>
                     <option disabled selected>Seleccionar</option>
-                    @foreach($aEstados as $item)
-                        @if($pedido->fk_idestado == $item->idestado)
-                            <option selected value=" "> {{ $item->nombre }}</option>
-                        @else
-                            <option value="">{{ $item->nombre}}</option>
-                        @endif
-                    @endforeach
+                   <option selected value=" "> </option>
+                        
+                            <option value=""></option>
+                  
                 </select>
             </div>
             <div class="form-group col-lg-12">
                 <label>Descripción: *</label>
-                <textarea id="txtDescripcion" name="txtDescripcion" class="form-control">{{ $pedido->descripcion }}</textarea>
+                <textarea id="txtDescripcion" name="txtDescripcion" class="form-control"> </textarea>
             </div>
             <div class="form-group col-lg-6">
                 <label>Total: *</label>
-                <input type="number" name="txtTotal" id="txtTotal" class="form-control" value="{{ $pedido->total }}" required>
+                <input type="number" name="txtTotal" id="txtTotal" class="form-control" value="" required>
             </div>  
         </div>
     </form>

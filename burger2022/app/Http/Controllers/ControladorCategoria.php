@@ -20,7 +20,7 @@ class ControladorCategoria extends Controller
     public function guardar(Request $request) {
         try {
             //Define la entidad servicio
-            $titulo = "Modificar categoria";
+            $titulo = "Modificar Categoria";
             $entidad = new Categoria();
             $entidad->cargarDesdeRequest($request);
 
@@ -29,6 +29,7 @@ class ControladorCategoria extends Controller
                 $msg["ESTADO"] = MSG_ERROR;
                 $msg["MSG"] = "Complete todos los datos";
             } else {
+    
                 if ($_POST["id"] > 0) {
                     //Es actualizacion
                     $entidad->guardar();
@@ -43,7 +44,7 @@ class ControladorCategoria extends Controller
                     $msg["MSG"] = OKINSERT;
                 }
          
-                $_POST["id"] = $entidad->idcategoria;
+                $_POST["id"] = $entidad->idpedido;
                 return view('categoria.categoria-listar', compact('titulo', 'msg'));
             }
         } catch (Exception $e) {

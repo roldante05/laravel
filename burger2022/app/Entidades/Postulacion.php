@@ -24,6 +24,17 @@ class Postulacion extends Model
   
       ];
 
+      public function cargarDesdeRequest($request)
+      {
+          $this->idpostulacion = $request->input('id') != "0" ? $request->input('id') : $this->idpostulacion;
+          $this->nombre = $request->input('txtNombre');
+          $this->apellido = $request->input('txtApellido');
+          $this->correo = $request->input('txtCorreo');
+          $this->celular = $request->input('txtCelular');
+          $this->curriculum = "";
+      }
+  
+
       public function insertar()
     {
         $sql = "INSERT INTO $this->table (

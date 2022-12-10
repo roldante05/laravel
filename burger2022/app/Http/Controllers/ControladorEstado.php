@@ -2,27 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Entidades\Producto; 
+use App\Entidades\Estado;
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
 use Illuminate\Http\Request;
 
 require app_path() . '/start/constants.php';
 
-class ControladorProducto extends Controller
+class ControladorEstado extends Controller
 {
     public function nuevo()
     {
-        $titulo = "Nuevo Producto";
-                return view('producto.producto-nuevo', compact('titulo'));
-    } 
+        $titulo = "Nuevo estado";
+
+        return view('estado.estado-nuevo', compact('titulo'));
+    }
+
 
     public function guardar(Request $request)
     {
         try {
             //Define la entidad servicio
-            $titulo = "Modificar Producto";
-            $entidad = new Producto();
+            $titulo = "Modificar estado";
+            $entidad = new Estado();
             $entidad->cargarDesdeRequest($request);
 
             //validaciones
@@ -44,20 +46,19 @@ class ControladorProducto extends Controller
                     $msg["MSG"] = OKINSERT;
                 }
 
-                $_POST["id"] = $entidad->idproducto;
-                return view('producto.producto-listar', compact('titulo', 'msg'));
+                $_POST["id"] = $entidad->idestado;
+                return view('estado.estado-listar', compact('titulo', 'msg'));
             }
         } catch (Exception $e) {
             $msg["ESTADO"] = MSG_ERROR;
             $msg["MSG"] = ERRORINSERT;
         }
 
-        $id = $entidad->producto;
-        $producto = new Producto();
-        $producto->obtenerPorId($id);
+        $id = $entidad->estado;
+        $estado = new Estado();
+        $estado->obtenerPorId($id);
 
-        return view('producto.producto-nuevo', compact('msg', 'producto', 'titulo')) . '?id=' . $producto->idproducto;
+        return view('estado.estado-nuevo', compact('msg', 'estado', 'titulo')) . '?id=' . $estado->idestado;
 
     }
-
 }

@@ -11,12 +11,29 @@ require app_path() . '/start/constants.php';
 
 class ControladorCliente extends Controller
 {
+
+    
     public function nuevo()
     {
         $titulo = "Nuevo cliente";
                 return view('cliente.cliente-nuevo', compact('titulo'));
     } 
-
+    
+    public function index()
+    {
+        $titulo = "Listado de clientes";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
+                $codigo = "MENUCONSULTA";
+                $mensaje = "No tiene permisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                return view('cliente.cliente-listar', compact('titulo'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }
 
     public function guardar(Request $request)
     {

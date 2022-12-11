@@ -18,6 +18,21 @@ class ControladorEstado extends Controller
         return view('estado.estado-nuevo', compact('titulo'));
     }
 
+    public function index()
+    {
+        $titulo = "Listado de estados";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
+                $codigo = "MENUCONSULTA";
+                $mensaje = "No tiene permisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                return view('estado.estado-listar', compact('titulo'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }
 
     public function guardar(Request $request)
     {

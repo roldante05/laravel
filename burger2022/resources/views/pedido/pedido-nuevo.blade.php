@@ -55,31 +55,28 @@ if (isset($msg)) {
             <div class="form-group col-lg-6">
                 <label>Sucursal: *</label>
                 <select name="lstSucursal" id="lstSucursal" class="form-control"  required>
-                    <option disabled selected>Seleccionar</option>
-                         <option selected value="  ">  </option>
-                       
-                            <option value="  "> </option>
-                       
+                    <option selected disabled ">Seleccionar</option>
+                    @foreach($aSucursales as $item)
+                    <option value="{{$item->idsucursal}} ">{{$item->nombre}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group col-lg-6">
                 <label>Cliente: *</label>
                 <select name="lstCliente" id="lstCliente" class="form-control"  required>
-                    <option disabled selected>Seleccionar</option>
-                  <option selected value="  "> </option>
-                        
-                            <option value=""></option>
-                      
+                    <option selected disabled ">Seleccionar</option>
+                    @foreach($aClientes as $item)
+                    <option value="{{$item->idcliente}} ">{{$item->nombre}}</option>
+                    @endforeach   
                 </select>
             </div>
             <div class="form-group col-lg-6">
                 <label>Estado: *</label>
                 <select name="lstEstado" id="lstEstado" class="form-control"  required>
                     <option disabled selected>Seleccionar</option>
-                   <option selected value=" "> </option>
-                        
-                            <option value=""></option>
-                  
+                    @foreach($aEstados as $item)
+                    <option value="{{$item->idestado}} ">{{$item->nombre}}</option>
+                    @endforeach  
                 </select>
             </div>
             <div class="form-group col-lg-12">

@@ -3,7 +3,7 @@
 @section('scripts')
 <script>
     globalId = '<?php echo isset($producto->idproducto) && $producto->idproducto > 0 ? $producto->idproducto : 0; ?>';
-    <?php $globalId = isset($producto->idproducto) ? $producto->idproducto : "0";?>
+    <?php $globalId = isset($producto->idproducto) ? $producto->idproducto : "0"; ?>
 </script>
 @endsection
 @section('breadcrumb')
@@ -22,9 +22,9 @@
     <li class="btn-item"><a title="Salir" href="#" class="fa fa-arrow-circle-o-left" aria-hidden="true" onclick="javascript: $('#modalSalir').modal('toggle');"><span>Salir</span></a></li>
 </ol>
 <script>
-function fsalir(){
-    location.href ="/admin/productos";
-}
+    function fsalir() {
+        location.href = "/admin/productos";
+    }
 </script>
 @endsection
 @section('contenido')
@@ -36,84 +36,83 @@ if (isset($msg)) {
 }
 ?>
 <div class="panel-body">
-        <div id = "msg"></div>
-        <?php
-if (isset($msg)) {
-    echo '<script>msgShow("' . $msg["MSG"] . '", "' . $msg["ESTADO"] . '")</script>';
-}
-?>
-      <form id="form1" method="POST" enctype="multipart/form-data">
-            <div class="row">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
-                <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
-                <div class="form-group col-lg-6">
-                        <label>Nombre: *</label>
-                        <input type="text" id="txtNombre" name="txtNombre" class="form-control" value="" required>
-                </div>
-                <div class="form-group col-lg-6" >
-                          <label for="txtCantidad">Cantidad: *</label>
-                          <input type="number" id="txtCantidad" name="txtCantidad" class="form-control" value="" required>
-                </div>
-                <div class="form-group col-lg-6">
-                          <label for="txtPrecio">Precio: *</label>
-                          <input type="number" id="txtPrecio" name="txtPrecio" class="form-control" value="" required>
-                </div>
-                <div class="form-group col-lg-6">
-                        <label>Categoria: *</label>
-                        <select name="lstCategoria" id="lstCategoria" class="form-control selectpicker" data-live-search="true" required>
-                            <option disabled selected>Seleccionar</option>
-                      
-                                 <option selected value=""></option>
-                              
-                                    <option value=""></option>
+    <div id="msg"></div>
+    <?php
+    if (isset($msg)) {
+        echo '<script>msgShow("' . $msg["MSG"] . '", "' . $msg["ESTADO"] . '")</script>';
+    }
+    ?>
+    <form id="form1" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
+            <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
+            <div class="form-group col-lg-6">
+                <label>Nombre: *</label>
+                <input type="text" id="txtNombre" name="txtNombre" class="form-control" value="" required>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="txtCantidad">Cantidad: *</label>
+                <input type="number" id="txtCantidad" name="txtCantidad" class="form-control" value="" required>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="txtPrecio">Precio: *</label>
+                <input type="number" id="txtPrecio" name="txtPrecio" class="form-control" value="" required>
+            </div>
+            <div class="form-group col-lg-6">
+                <label>Categoria: *</label>
+                <select name="lstCategoria" id="lstCategoria" class="form-control selectpicker" data-live-search="true" required>
+                    <option selected disabled ">Seleccionar</option>
+                    @foreach($aCategorias as $item)
+                    <option value=" {{$item->idcategoria}} ">{{$item->nombre}}</option>
+                    @endforeach
                            
                         </select>
                 </div>
-                <div class="form-group col-lg-6">
-                        <label  for="txtdescripcion">Descripcion: *</label>
+                <div class=" form-group col-lg-6">
+                        <label for="txtdescripcion">Descripcion: *</label>
                         <textarea id="txtDescripcion" name="txtDescripcion" class="form-control" required></textarea>
-                </div>
-                <div class="form-group col-lg-6">
-                        <label>Imagen:</label>
-                        <input type="file" id="archivo" name="archivo" class="form-control-file" value="">
-                        <img src="" alt="">
-                </div>
             </div>
-      </form>
-      <script>
+            <div class="form-group col-lg-6">
+                <label>Imagen:</label>
+                <input type="file" id="archivo" name="archivo" class="form-control-file" value="">
+                <img src="" alt="">
+            </div>
+        </div>
+    </form>
+    <script>
+        $("#form1").validate();
 
-    $("#form1").validate();
-
-    function guardar() {
-        if ($("#form1").valid()) {
-            modificado = false;
-            form1.submit();
-        } else {
-            $("#modalGuardar").modal('toggle');
-            msgShow("Corrija los errores e intente nuevamente.", "danger");
-            return false;
-        }
-    }
-
-    function eliminar() {
-        $.ajax({
-            type: "GET",
-            url: "{{ asset('admin/producto/eliminar') }}",
-            data: { id:globalId },
-            async: true,
-            dataType: "json",
-            success: function (data) {
-                if (data.err = "0") {
-                    msgShow("Registro eliminado exitosamente.", "success");
-                    $("#btnEnviar").hide();
-                    $("#btnEliminar").hide();
-                    $('#mdlEliminar').modal('toggle');
-                } else {
-                    msgShow("Error al eliminar", "success");
-                }
+        function guardar() {
+            if ($("#form1").valid()) {
+                modificado = false;
+                form1.submit();
+            } else {
+                $("#modalGuardar").modal('toggle');
+                msgShow("Corrija los errores e intente nuevamente.", "danger");
+                return false;
             }
-        });
-    }
+        }
 
-</script>
-@endsection
+        function eliminar() {
+            $.ajax({
+                type: "GET",
+                url: "{{ asset('admin/producto/eliminar') }}",
+                data: {
+                    id: globalId
+                },
+                async: true,
+                dataType: "json",
+                success: function(data) {
+                    if (data.err = "0") {
+                        msgShow("Registro eliminado exitosamente.", "success");
+                        $("#btnEnviar").hide();
+                        $("#btnEliminar").hide();
+                        $('#mdlEliminar').modal('toggle');
+                    } else {
+                        msgShow("Error al eliminar", "success");
+                    }
+                }
+            });
+        }
+    </script>
+    @endsection

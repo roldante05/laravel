@@ -103,30 +103,28 @@ class Sucursal extends Model
       {
           $request = $_REQUEST;
           $columns = array(
-              0 => 'A.idcliente',
+              0 => 'A.idsucursal',
               1 => 'A.nombre',
-              2 => 'A.dni',
-              3 => 'A.correo',
-              4 => 'A.celular'
+              2 => 'A.telefono',
+              3 => 'A.direccion',
+              4 => 'A.linkmapa'
           );
           $sql = "SELECT DISTINCT
-                      A.idcliente,
+                      A.idsucursal,
                       A.nombre, 
-                      A.apellido, 
-                      A.correo, 
-                      A.dni, 
-                      A.celular
-                      FROM clientes A
+                      A.telefono, 
+                      A.direccion, 
+                      A.linkmapa
+                      FROM sucursales A
                   WHERE 1=1
                   ";
   
           //Realiza el filtrado
           if (!empty($request['search']['value'])) {
               $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' ";
-              $sql .= " OR A.apellido LIKE '%" . $request['search']['value'] . "%' ";
-              $sql .= " OR A.documento LIKE '%" . $request['search']['value'] . "%' ";
-              $sql .= " OR A.correo LIKE '%" . $request['search']['value'] . "%' )";
-              $sql .= " OR A.celular LIKE '%" . $request['search']['value'] . "%' )";
+              $sql .= " OR A.telefono LIKE '%" . $request['search']['value'] . "%' ";
+              $sql .= " OR A.direccion LIKE '%" . $request['search']['value'] . "%' ";
+              $sql .= " OR A.linkmapa LIKE '%" . $request['search']['value'] . "%' )";
           }
           $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
   

@@ -115,20 +115,21 @@ class Postulacion extends Model
       {
           $request = $_REQUEST;
           $columns = array(
-              0 => 'A.idcliente',
+              0 => 'A.idpostulacion',
               1 => 'A.nombre',
-              2 => 'A.dni',
-              3 => 'A.correo',
-              4 => 'A.celular'
+              2 => 'A.apellido',
+              3 => 'A.celular',
+              4 => 'A.correo',
+              5 => 'A.curriculum'
           );
           $sql = "SELECT DISTINCT
-                      A.idcliente,
+                      A.idpostulacion,
                       A.nombre, 
                       A.apellido, 
+                      A.celular, 
                       A.correo, 
-                      A.dni, 
-                      A.celular
-                      FROM clientes A
+                      A.curriculum
+                      FROM postulaciones A
                   WHERE 1=1
                   ";
   
@@ -136,9 +137,9 @@ class Postulacion extends Model
           if (!empty($request['search']['value'])) {
               $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' ";
               $sql .= " OR A.apellido LIKE '%" . $request['search']['value'] . "%' ";
-              $sql .= " OR A.documento LIKE '%" . $request['search']['value'] . "%' ";
+              $sql .= " OR A.celular LIKE '%" . $request['search']['value'] . "%' ";
               $sql .= " OR A.correo LIKE '%" . $request['search']['value'] . "%' )";
-              $sql .= " OR A.celular LIKE '%" . $request['search']['value'] . "%' )";
+              $sql .= " OR A.curriculum LIKE '%" . $request['search']['value'] . "%' )";
           }
           $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
   

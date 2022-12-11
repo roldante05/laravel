@@ -47,6 +47,42 @@ class ControladorPedido extends Controller
     }
 
     
+    public function cargarGrilla()
+    {
+        $request = $_REQUEST;
+
+        $entidad = new Pedido();
+        $aPedidos = $entidad->obtenerFiltrado();
+
+        $data = array();
+        $cont = 0;
+
+        $inicio = $request['start'];
+        $registros_por_pagina = $request['length'];
+
+
+        for ($i = $inicio; $i < count($aPedidos) && $cont < $registros_por_pagina; $i++) {
+            $row = array();
+            $row[] = "<a href='/admin/pedido/".$aPedidos[$i]->idpedido."'class='btn btn-secondary''><i class='fa-solid fa-pen-to-square'></i></a>";
+            $row[] = $aPedidos[$i]->fecha;
+            $row[] = $aPedidos[$i]->sucursal;
+            $row[] = $aPedidos[$i]->cliente;
+            $row[] = $aPedidos[$i]->estado;
+            $row[] = $aPedidos[$i]->descripcion;
+            $row[] = $aPedidos[$i]->total;
+            $cont++;
+            $data[] = $row;
+        }
+
+        $json_data = array(
+            "draw" => intval($request['draw']),
+            "recordsTotal" => count($aPedidos), //cantidad total de registros sin paginar
+            "recordsFiltered" => count($aPedidos), //cantidad total de registros en la paginacion
+            "data" => $data,
+        );
+        return json_encode($json_data);
+    }
+
 
     public function guardar(Request $request) {
         try {

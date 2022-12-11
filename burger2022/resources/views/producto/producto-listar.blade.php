@@ -27,6 +27,7 @@ if (isset($msg)) {
     <thead>
         <tr>
             <th></th>
+            <th></th>
             <th>Nombre</th>
             <th>Cantidad</th>
             <th>Precio</th>
@@ -36,8 +37,15 @@ if (isset($msg)) {
     </thead>
 </table> 
 <script>
-	$(document).ready( function () {
-    $('#grilla').DataTable();
-} );
+	let dataTable = $('#grilla').DataTable({
+	    "processing": true,
+        "serverSide": true,
+	    "bFilter": true,
+	    "bInfo": true,
+	    "bSearchable": true,
+        "pageLength": 25,
+        "order": [[ 0, "asc" ]],
+	    "ajax": "{{ route('producto.cargarGrilla') }}"
+	});
 </script>
 @endsection

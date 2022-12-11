@@ -64,9 +64,9 @@ class ControladorPedido extends Controller
         for ($i = $inicio; $i < count($aPedidos) && $cont < $registros_por_pagina; $i++) {
             $row = array();
             $row[] = "<a href='/admin/pedido/".$aPedidos[$i]->idpedido."'class='btn btn-secondary''><i class='fa-solid fa-pen-to-square'></i></a>";
-            $row[] = $aPedidos[$i]->fecha;
+            $row[] = date_format(date_create($aPedidos[$i]->fecha), 'd/m/Y');
             $row[] = $aPedidos[$i]->sucursal;
-            $row[] = $aPedidos[$i]->cliente;
+            $row[] = "<a href='/admin/cliente/".$aPedidos[$i]->fk_idcliente."'> ".$aPedidos[$i]->cliente ." </a>";
             $row[] = $aPedidos[$i]->estado;
             $row[] = $aPedidos[$i]->descripcion;
             $row[] = $aPedidos[$i]->total;

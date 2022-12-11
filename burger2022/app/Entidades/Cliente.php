@@ -134,7 +134,7 @@ class Cliente extends Model
               $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' ";
               $sql .= " OR A.apellido LIKE '%" . $request['search']['value'] . "%' ";
               $sql .= " OR A.documento LIKE '%" . $request['search']['value'] . "%' ";
-              $sql .= " OR A.correo LIKE '%" . $request['search']['value'] . "%' )";
+              $sql .= " OR A.correo LIKE '%" . $request['search']['value'] . "%' ";
               $sql .= " OR A.celular LIKE '%" . $request['search']['value'] . "%' )";
           }
           $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];

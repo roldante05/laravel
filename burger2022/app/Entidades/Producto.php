@@ -137,8 +137,10 @@ class Producto extends Model
                       A.precio, 
                       A.imagen, 
                       A.fk_idcategoria,
+                      B.nombre AS categoria,
                       A.descripcion
-                      FROM productos A
+                      FROM productos A 
+                      INNER JOIN categorias B ON A.fk_idcategoria = B.idcategoria
                   WHERE 1=1
                   ";
   

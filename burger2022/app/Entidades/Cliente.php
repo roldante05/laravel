@@ -30,7 +30,6 @@ class Cliente extends Model
         $this->clave = $request->input('txtClave');
     }
 
-
       public function insertar()
     {
         $sql = "INSERT INTO $this->table (
@@ -90,10 +89,10 @@ class Cliente extends Model
           $sql = "SELECT
                   idcliente,
                   nombre, 
-          apellido, 
-          correo, 
-          dni, 
-          celular
+                  apellido, 
+                  correo, 
+                  dni, 
+                  celular
                   FROM $this->table  WHERE idcliente = $idcliente";
           $lstRetorno = DB::select($sql);
   
@@ -109,5 +108,40 @@ class Cliente extends Model
           return null;
       }
   
+      public function obtenerFiltrado()
+      {
+          $request = $_REQUEST;
+          $columns = array(
+              0 => 'A.idcliente',
+              1 => 'A.nombre',
+              2 => 'A.dni',
+              3 => 'A.correo',
+              4 => 'A.celular'
+          );
+          $sql = "SELECT DISTINCT
+                      A.idcliente,
+                      A.nombre, 
+                      A.apellido, 
+                      A.correo, 
+                      A.dni, 
+                      A.celular
+                      FROM clientes A
+                  WHERE 1=1
+                  ";
+  
+          //Realiza el filtrado
+          if (!empty($request['search']['value'])) {
+              $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' ";
+              $sql .= " OR A.apellido LIKE '%" . $request['search']['value'] . "%' ";
+              $sql .= " OR A.documento LIKE '%" . $request['search']['value'] . "%' ";
+              $sql .= " OR A.correo LIKE '%" . $request['search']['value'] . "%' )";
+              $sql .= " OR A.celular LIKE '%" . $request['search']['value'] . "%' )";
+          }
+          $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
+  
+          $lstRetorno = DB::select($sql);
+  
+          return $lstRetorno;
+      }
 
 }

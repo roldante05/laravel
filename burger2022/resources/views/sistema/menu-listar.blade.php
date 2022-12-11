@@ -34,7 +34,7 @@ if (isset($msg)) {
     </thead>
 </table> 
 <script>
-	var dataTable = $('#grilla').DataTable({
+	let dataTable = $('#grilla').DataTable({
 	    "processing": true,
         "serverSide": true,
 	    "bFilter": true,

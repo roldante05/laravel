@@ -56,7 +56,7 @@ class ControladorPostulacion extends Controller
             $row[] = $aPostulacion[$i]->nombre . " " . $aPostulacion[$i]->apellido;
             $row[] = $aPostulacion[$i]->celular;
             $row[] = $aPostulacion[$i]->correo;
-            $row[] = $aPostulacion[$i]->curriculum;
+            $row[] = "<a href='files/".$aPostulacion[$i]->curriculum."'class='btn btn-secondary''><i class='fa-solid fa-download'></i></a>";
             $cont++;
             $data[] = $row;
         }
@@ -78,12 +78,32 @@ class ControladorPostulacion extends Controller
             $entidad = new Postulacion();
             $entidad->cargarDesdeRequest($request);
 
+            if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) { //Se adjunta imagen
+                $extension = pathinfo($_FILES["archivo"]["name"], PATHINFO_EXTENSION);
+                 $nombre = date("Ymdhmsi") . ".$extension";
+                 $archivo = $_FILES["archivo"]["tmp_name"];
+                 move_uploaded_file($archivo, env('APP_PATH') . "/public/files/$nombre"); //guardaelarchivo
+                 $entidad->curriculum = $nombre;
+             }
+  
+
             //validaciones
             if ($entidad->nombre == "") {
                 $msg["ESTADO"] = MSG_ERROR;
                 $msg["MSG"] = "Complete todos los datos";
             } else {
                 if ($_POST["id"] > 0) {
+                    $postulacionAux = new Postulacion();
+                    $postulacionAux->obtenerPorId($entidad->idpostulacion);
+
+
+                    if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
+                        //Eliminar imagen anterior
+                        @unlink(env('APP_PATH') . "/public/files/$postulacionAux->curriculum");                          
+                    } else {
+                        $entidad->curriculum = $postulacionAux->curriculum;
+                    }
+
                     //Es actualizacion
                     $entidad->guardar();
 
@@ -132,5 +152,29 @@ class ControladorPostulacion extends Controller
             return redirect('admin/login');
         }
     }
+
+
+    public function eliminar(Request $request)
+    {
+        $id = $request->input('id');
+
+        if (Usuario::autenticado() == true) {
+            if (Patente::autorizarOperacion("MENUELIMINAR")) {
+
+                $entidad = new Postulacion();
+                $entidad->cargarDesdeRequest($request);
+                $entidad->eliminar();
+
+                $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
+            } else {
+                $codigo = "ELIMINARPROFESIONAL";
+                $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
+            }
+            echo json_encode($aResultado);
+        } else {
+            return redirect('admin/login');
+        }
+    }
+
 
 }

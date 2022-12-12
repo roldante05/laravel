@@ -29,7 +29,7 @@ class Estado extends Model
       public function insertar()
     {
         $sql = "INSERT INTO $this->table (
-         'nombre'
+         nombre
             ) VALUES (?);";
         $result = DB::insert($sql, [
             $this->nombre
@@ -82,8 +82,7 @@ class Estado extends Model
       {
           $request = $_REQUEST;
           $columns = array(
-              0 => 'A.idestado',
-              1 => 'A.nombre'
+              0 => 'A.idestado'
           );
           $sql = "SELECT DISTINCT
                       A.idestado,
@@ -94,7 +93,7 @@ class Estado extends Model
   
           //Realiza el filtrado
           if (!empty($request['search']['value'])) {
-              $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' ";
+              $sql .= " AND  A.nombre LIKE '%" . $request['search']['value'] . "%' ";
              }
           $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
   

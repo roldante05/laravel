@@ -2,14 +2,14 @@
 @section('titulo', "$titulo")
 @section('scripts')
 <script>
-    globalId = '<?php echo isset($estado->idestado) && $estado->idcliente > 0 ? $estado->idestado : 0; ?>';
+    globalId = '<?php echo isset($estado->idestado) && $estado->idestado > 0 ? $estado->idestado : 0; ?>';
     <?php $globalId = isset($estado->idestado) ? $estado->idestado : "0";?>
 </script>
 @endsection
 @section('breadcrumb')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/admin/home">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="/admin/estados">Clientes;</a></li>
+    <li class="breadcrumb-item"><a href="/admin/estados">Estados;</a></li>
     <li class="breadcrumb-item active">Modificar</li>
 </ol>
 <ol class="toolbar">

@@ -39,12 +39,12 @@ class Producto extends Model
       public function insertar()
     {
         $sql = "INSERT INTO $this->table (
-         'nombre', 
-          'cantidad', 
-          'precio', 
-          'imagen',
-          'fk_idcategoria',
-          'descripcion'
+         nombre, 
+          cantidad, 
+          precio, 
+          imagen,
+          fk_idcategoria,
+          descripcion
             ) VALUES (?, ?, ?, ?, ?, ?);";
         $result = DB::insert($sql, [
             $this->nombre,

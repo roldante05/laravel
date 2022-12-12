@@ -128,8 +128,8 @@ class ControladorSucursal extends Controller
     {
         $titulo = "Modificar sucursal";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("SUCURUSALEDITAR")) {
-                $codigo = "SUCURUSALEDITAR";
+            if (!Patente::autorizarOperacion("SUCURSALEDITAR")) {
+                $codigo = "SUCURSALEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {

@@ -17,8 +17,8 @@ class ControladorProducto extends Controller
         $titulo = "Nuevo producto";
         
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("PRODUCTOALTA")) {
-                $codigo = "PRODUCTOALTA";
+            if (!Patente::autorizarOperacion("PRODUCTOSALTA")) {
+                $codigo = "PRODUCTOSALTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -176,16 +176,16 @@ class ControladorProducto extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("PRODUCTOBAJA")) {
+            if (Patente::autorizarOperacion("PRODUCTOELIMINAR")) {
 
                 $entidad = new Producto();
-                $entidad->cargarDesdeRequest($request);
                 @unlink(env('APP_PATH') . "/public/files/$entidad->imagen");                          
+                $entidad->cargarDesdeRequest($request);
                 $entidad->eliminar();
-
+         
                 $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
             } else {
-                $codigo = "PRODUCTOBAJA";
+                $codigo = "PRODUCTOELIMINAR";
                 $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
             }
             echo json_encode($aResultado);

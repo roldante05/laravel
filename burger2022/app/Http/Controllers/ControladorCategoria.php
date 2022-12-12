@@ -13,9 +13,21 @@ class ControladorCategoria extends Controller
 {
     public function nuevo()
     {
-        $titulo = "Nueva Categoria";
-        $categoria = new Categoria();
+        $titulo = "Nueva categoria"; 
+
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("CATEGORIACONSULTA")) {
+                $codigo = "CATEGORIACONSULTA";
+                $mensaje = "No tiene permisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $categoria = new Categoria();
                 return view('categoria.categoria-nuevo', compact('titulo', 'categoria'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    
     } 
 
 
@@ -23,8 +35,8 @@ class ControladorCategoria extends Controller
     {
         $titulo = "Listado de categorias";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                $codigo = "MENUCONSULTA";
+            if (!Patente::autorizarOperacion("CATEGORIACONSULTA")) {
+                $codigo = "CATEGORIACONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -116,8 +128,8 @@ class ControladorCategoria extends Controller
     {
         $titulo = "Modificar categoria";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
-                $codigo = "MENUMODIFICACION";
+            if (!Patente::autorizarOperacion("CATEGORIAMODIFICACION")) {
+                $codigo = "CATEGORIAMODIFICACION";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -127,6 +139,27 @@ class ControladorCategoria extends Controller
 
                 return view('categoria.categoria-nuevo', compact('categoria', 'titulo'));
             }
+        } else {
+            return redirect('admin/login');
+        }
+    }
+
+    public function eliminar(Request $request){
+        $id = $request->input('id');
+
+        if (Usuario::autenticado() == true) {
+            if (Patente::autorizarOperacion("CATEGORIAELIMINAR")) {
+
+                $entidad = new Categoria();
+                $entidad->cargarDesdeRequest($request);
+                $entidad->eliminar();
+
+                $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
+            } else {
+                $codigo = "CATEGORIAELIMINAR";
+                $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
+            }
+            echo json_encode($aResultado);
         } else {
             return redirect('admin/login');
         }

@@ -15,7 +15,7 @@ class ControladorPostulacion extends Controller
     {
         $titulo = "Nueva Posutalcion";
         $postulacion = new Postulacion();
-                return view('postulacion.postulacion-nuevo', compact('titulo','postulacion'));
+        return view('postulacion.postulacion-nuevo', compact('titulo','postulacion'));
     } 
 
 
@@ -23,8 +23,8 @@ class ControladorPostulacion extends Controller
     {
         $titulo = "Listado de postulaciones";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                $codigo = "MENUCONSULTA";
+            if (!Patente::autorizarOperacion("POSTULANTECONSULTA")) {
+                $codigo = "POSTULANTECONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -137,8 +137,8 @@ class ControladorPostulacion extends Controller
     {
         $titulo = "Modificar postulacion";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
-                $codigo = "MENUMODIFICACION";
+            if (!Patente::autorizarOperacion("POSTULANTEEDITAR")) {
+                $codigo = "POSTULANTEEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -159,15 +159,16 @@ class ControladorPostulacion extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("MENUELIMINAR")) {
+            if (Patente::autorizarOperacion("POSTULANTEBAJA")) {
 
                 $entidad = new Postulacion();
                 $entidad->cargarDesdeRequest($request);
+                @unlink(env('APP_PATH') . "/public/files/$entidad->imagen");                          
                 $entidad->eliminar();
 
                 $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
             } else {
-                $codigo = "ELIMINARPROFESIONAL";
+                $codigo = "POSTULANTEBAJA";
                 $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
             }
             echo json_encode($aResultado);

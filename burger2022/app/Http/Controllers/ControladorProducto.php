@@ -14,21 +14,32 @@ class ControladorProducto extends Controller
 {
     public function nuevo()
     {
-        $titulo = "Nuevo Producto";
+        $titulo = "Nuevo producto";
         
-        $categoria = new Categoria();
-        $aCategorias = $categoria->obtenerTodos();
-        $producto = new Producto();
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("PRODUCTOALTA")) {
+                $codigo = "PRODUCTOALTA";
+                $mensaje = "No tiene permisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $producto = new Producto();
         
-        return view('producto.producto-nuevo', compact('titulo', 'aCategorias', 'producto'));
+                $categoria = new Categoria();
+                $aCategorias = $categoria->obtenerTodos();
+
+                return view('producto.producto-nuevo', compact('titulo', 'producto', 'aCategorias'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
     } 
 
     public function index()
     {
         $titulo = "Listado de productos";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                $codigo = "MENUCONSULTA";
+            if (!Patente::autorizarOperacion("PRODUCTOCONSULTA")) {
+                $codigo = "PRODUCTOCONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -141,8 +152,8 @@ class ControladorProducto extends Controller
     {
         $titulo = "Modificar producto";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
-                $codigo = "MENUMODIFICACION";
+            if (!Patente::autorizarOperacion("PRODUCTOEDITAR")) {
+                $codigo = "PRODUCTOEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -165,15 +176,16 @@ class ControladorProducto extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("MENUELIMINAR")) {
+            if (Patente::autorizarOperacion("PRODUCTOBAJA")) {
 
                 $entidad = new Producto();
                 $entidad->cargarDesdeRequest($request);
+                @unlink(env('APP_PATH') . "/public/files/$entidad->imagen");                          
                 $entidad->eliminar();
 
                 $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
             } else {
-                $codigo = "ELIMINARPROFESIONAL";
+                $codigo = "PRODUCTOBAJA";
                 $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
             }
             echo json_encode($aResultado);

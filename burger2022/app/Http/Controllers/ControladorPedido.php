@@ -17,27 +17,37 @@ class ControladorPedido extends Controller
     public function nuevo()
     {
         $titulo = "Nuevo Pedido";
-        $sucursal = new Sucursal();
-        $aSucursales = $sucursal->obtenerTodos();
 
-        $cliente = new Cliente();
-        $aClientes = $cliente->obtenerTodos();
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("PEDIDOALTA")) {
+                $codigo = "PEDIDOALTA";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $pedido = new Pedido();
 
-        $estado = new Estado();
-        $aEstados = $estado->obtenerTodos();
+                $sucursal = new Sucursal();
+                $aSucursales = $sucursal->obtenerTodos();
 
-        $pedido = new Pedido();        
-        
-        return view('pedido.pedido-nuevo', compact('titulo', 'pedido','aSucursales','aClientes','aEstados'));
+                $cliente = new Cliente();
+                $aClientes = $cliente->obtenerTodos();
 
+                $estado = new Estado();
+                $aEstados = $estado->obtenerTodos();
+                
+                return view('pedido.pedido-nuevo', compact('pedido','aSucursales', 'aClientes', 'aEstados', 'titulo'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
     }
 
     public function index()
     {
         $titulo = "Listado de pedidos";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                $codigo = "MENUCONSULTA";
+            if (!Patente::autorizarOperacion("PEDIDOCONSULTA")) {
+                $codigo = "PEDIDOCONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -133,8 +143,8 @@ class ControladorPedido extends Controller
     {
         $titulo = "Modificar pedido";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
-                $codigo = "MENUMODIFICACION";
+            if (!Patente::autorizarOperacion("PEDIDOEDITAR")) {
+                $codigo = "PEDIDOEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -161,7 +171,7 @@ class ControladorPedido extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("MENUELIMINAR")) {
+            if (Patente::autorizarOperacion("PEDIDOBAJA")) {
 
                 $entidad = new Pedido();
                 $entidad->cargarDesdeRequest($request);
@@ -169,7 +179,7 @@ class ControladorPedido extends Controller
 
                 $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
             } else {
-                $codigo = "ELIMINARPROFESIONAL";
+                $codigo = "PEDIDOBAJA";
                 $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
             }
             echo json_encode($aResultado);

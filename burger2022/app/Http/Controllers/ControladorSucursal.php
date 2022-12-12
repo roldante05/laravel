@@ -13,17 +13,30 @@ class ControladorSucursal extends Controller
 {
     public function nuevo()
     {
-        $titulo = "Nueva Sucursal";
-        $sucursal = new Sucursal();
-                return view('sucursal.sucursal-nuevo', compact('titulo','sucursal'));
+        $titulo = "Nueva sucursal";
+
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("SUCURSALALTA")) {
+                $codigo = "SUCURSALALTA";
+                $mensaje = "No tiene permisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $sucursal = new Sucursal();
+                return view('sucursal.sucursal-nuevo', compact('titulo', 'sucursal'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+  
+    
     } 
 
     public function index()
     {
         $titulo = "Listado de sucursales";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                $codigo = "MENUCONSULTA";
+            if (!Patente::autorizarOperacion("SUCURSALCONSULTA")) {
+                $codigo = "SUCURSALCONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -115,8 +128,8 @@ class ControladorSucursal extends Controller
     {
         $titulo = "Modificar sucursal";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
-                $codigo = "MENUMODIFICACION";
+            if (!Patente::autorizarOperacion("SUCURUSALEDITAR")) {
+                $codigo = "SUCURUSALEDITAR";
                 $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -136,7 +149,7 @@ class ControladorSucursal extends Controller
         $id = $request->input('id');
 
         if (Usuario::autenticado() == true) {
-            if (Patente::autorizarOperacion("MENUELIMINAR")) {
+            if (Patente::autorizarOperacion("SUCURSALBAJA")) {
 
                 $entidad = new Sucursal();
                 $entidad->cargarDesdeRequest($request);
@@ -144,7 +157,7 @@ class ControladorSucursal extends Controller
 
                 $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
             } else {
-                $codigo = "ELIMINARPROFESIONAL";
+                $codigo = "SUCURSALBAJA";
                 $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
             }
             echo json_encode($aResultado);

@@ -127,18 +127,17 @@ class Producto extends Model
               2 => 'A.cantidad',
               3 => 'A.precio',
               4 => 'A.imagen',
-              5 => 'A.fk_idcategoria',
-              6 => 'A.descripcion'
+              5 => 'A.fk_idcategoria'
           );
           $sql = "SELECT DISTINCT
                       A.idproducto,
                       A.nombre, 
                       A.cantidad, 
                       A.precio, 
-                      A.imagen, 
                       A.fk_idcategoria,
                       B.nombre AS categoria,
-                      A.descripcion
+                      A.descripcion,
+                      A.imagen
                       FROM productos A 
                       INNER JOIN categorias B ON A.fk_idcategoria = B.idcategoria
                   WHERE 1=1

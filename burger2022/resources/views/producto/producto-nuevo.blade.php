@@ -63,8 +63,12 @@ if (isset($msg)) {
                 <select name="lstCategoria" id="lstCategoria" class="form-control selectpicker" data-live-search="true" required>
                     <option selected disabled ">Seleccionar</option>
                     @foreach($aCategorias as $item)
-                    <option value=" {{$item->idcategoria}} ">{{$item->nombre}}</option>
-                    @endforeach
+                                @if($item->idcategoria == $producto->fk_idcategoria)
+                                    <option selected value="{{ $item->idcategoria}}">{{ $item->nombre}}</option>
+                                @else
+                                    <option value="{{ $item->idcategoria}}">{{ $item->nombre}}</option>
+                                @endif
+                            @endforeach
                            
                         </select>
                 </div>

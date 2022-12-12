@@ -57,7 +57,11 @@ if (isset($msg)) {
                 <select name="lstSucursal" id="lstSucursal" class="form-control"  required>
                     <option selected disabled ">Seleccionar</option>
                     @foreach($aSucursales as $item)
-                    <option value="{{$item->idsucursal}} ">{{$item->nombre}}</option>
+                        @if($pedido->fk_idsucursal == $item->idsucursal)
+                            <option selected value=" {{ $item->idsucursal }} "> {{ $item->nombre }} </option>
+                        @else
+                            <option value=" {{ $item->idsucursal }} "> {{ $item->nombre }} </option>
+                        @endif
                     @endforeach
                 </select>
             </div>
@@ -66,8 +70,12 @@ if (isset($msg)) {
                 <select name="lstCliente" id="lstCliente" class="form-control"  required>
                     <option selected disabled ">Seleccionar</option>
                     @foreach($aClientes as $item)
-                    <option value="{{$item->idcliente}} ">{{$item->nombre}}</option>
-                    @endforeach   
+                        @if($pedido->fk_idcliente == $item->idcliente)
+                            <option selected value=" {{ $item->idcliente }} "> {{ $item->nombre }} {{ $item->apellido}}</option>
+                        @else
+                            <option value="{{ $item->idcliente}}">{{ $item->nombre}} {{ $item->apellido}}</option>
+                        @endif
+                    @endforeach
                 </select>
             </div>
             <div class="form-group col-lg-6">
@@ -75,8 +83,12 @@ if (isset($msg)) {
                 <select name="lstEstado" id="lstEstado" class="form-control"  required>
                     <option disabled selected>Seleccionar</option>
                     @foreach($aEstados as $item)
-                    <option value="{{$item->idestado}} ">{{$item->nombre}}</option>
-                    @endforeach  
+                        @if($pedido->fk_idestado == $item->idestado)
+                            <option selected value=" {{ $item->idestado }} "> {{ $item->nombre }}</option>
+                        @else
+                            <option value="{{ $item->idestado}}">{{ $item->nombre}}</option>
+                        @endif
+                    @endforeach
                 </select>
             </div>
             <div class="form-group col-lg-12">

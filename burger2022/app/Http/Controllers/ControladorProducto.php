@@ -61,7 +61,6 @@ class ControladorProducto extends Controller
             $row[] = $aProductos[$i]->cantidad;
             $row[] = "$" . number_format($aProductos[$i]->precio, 2, ",", ".");
             $row[] = $aProductos[$i]->fk_idcategoria;
-            $row[] = $aProductos[$i]->descripcion;
             $row[] = "<img src='/files/".$aProductos[$i]->imagen."' class='img-thumbnail'>";
             $cont++;
             $data[] = $row;

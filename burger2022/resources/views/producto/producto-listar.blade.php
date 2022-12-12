@@ -27,12 +27,11 @@ if (isset($msg)) {
     <thead>
         <tr>
             <th></th>
-            <th></th>
             <th>Nombre</th>
             <th>Cantidad</th>
             <th>Precio</th>
             <th>Categoría</th>
-            <th>Descripción</th>
+            <th>Imagen</th>
         </tr>
     </thead>
 </table> 

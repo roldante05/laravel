@@ -49,7 +49,7 @@ if (isset($msg)) {
             
             <div class="form-group col-lg-6">
                 <label for="txtFecha" class="d-block">Fecha:*</label>
-                <input type="date" id="txtFecha" name="txtFecha" class="form-control">
+                <input type="date" id="txtFecha" name="txtFecha" class="form-control" value="{{$pedido->fecha}}" >
             </div>
             
             <div class="form-group col-lg-6">
@@ -81,11 +81,11 @@ if (isset($msg)) {
             </div>
             <div class="form-group col-lg-12">
                 <label>Descripción: *</label>
-                <textarea id="txtDescripcion" name="txtDescripcion" class="form-control"> </textarea>
+                <textarea id="txtDescripcion" name="txtDescripcion" class="form-control"  >{{$pedido->descripcion}} </textarea>
             </div>
             <div class="form-group col-lg-6">
                 <label>Total: *</label>
-                <input type="number" name="txtTotal" id="txtTotal" class="form-control" value="" required>
+                <input type="number" name="txtTotal" id="txtTotal" class="form-control" value="{{$pedido->total}}" required>
             </div>  
         </div>
     </form>

@@ -25,8 +25,10 @@ class ControladorPedido extends Controller
 
         $estado = new Estado();
         $aEstados = $estado->obtenerTodos();
+
+        $pedido = new Pedido();        
         
-        return view('pedido.pedido-nuevo', compact('titulo', 'aSucursales','aClientes','aEstados'));
+        return view('pedido.pedido-nuevo', compact('titulo', 'pedido','aSucursales','aClientes','aEstados'));
 
     }
 
@@ -126,7 +128,34 @@ class ControladorPedido extends Controller
         return view('pedido.pedido-nuevo', compact('msg', 'pedido', 'titulo')) . '?id=' . $pedido->idpedido;
 
     }
-  
+
+    public function editar($id)
+    {
+        $titulo = "Modificar pedido";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
+                $codigo = "MENUMODIFICACION";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $pedido = new Pedido();
+                $pedido->obtenerPorId($id);
+                $sucursal = new Sucursal();
+                $aSucursales = $sucursal->obtenerTodos();
+                $cliente = new Cliente();
+                $aClientes = $cliente->obtenerTodos();
+                $estado = new Estado();
+                $aEstados = $estado->obtenerTodos();
+        
+        
+
+                return view('pedido.pedido-nuevo', compact('pedido', 'titulo','aSucursales','aClientes','aEstados'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }
+
 }
 
 

@@ -14,7 +14,8 @@ class ControladorPostulacion extends Controller
     public function nuevo()
     {
         $titulo = "Nueva Posutalcion";
-                return view('postulacion.postulacion-nuevo', compact('titulo'));
+        $postulacion = new Postulacion();
+                return view('postulacion.postulacion-nuevo', compact('titulo','postulacion'));
     } 
 
 
@@ -110,6 +111,26 @@ class ControladorPostulacion extends Controller
 
         return view('postulacion.postulacion-nuevo', compact('msg', 'postulacion', 'titulo')) . '?id=' . $postulacion->idpostulacion;
 
+    }
+
+    public function editar($id)
+    {
+        $titulo = "Modificar postulacion";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
+                $codigo = "MENUMODIFICACION";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $postulacion = new Postulacion();
+                $postulacion->obtenerPorId($id);
+
+
+                return view('postulacion.postulacion-nuevo', compact('postulacion', 'titulo'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
     }
 
 }

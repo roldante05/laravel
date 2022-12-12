@@ -14,7 +14,8 @@ class ControladorCategoria extends Controller
     public function nuevo()
     {
         $titulo = "Nueva Categoria";
-                return view('categoria.categoria-nuevo', compact('titulo'));
+        $categoria = new Categoria();
+                return view('categoria.categoria-nuevo', compact('titulo', 'categoria'));
     } 
 
 
@@ -110,5 +111,26 @@ class ControladorCategoria extends Controller
         return view('categoria.categoria-nuevo', compact('msg', 'categoria', 'titulo')) . '?id=' . $categoria->idcategoria;
 
     }
+
+    public function editar($id)
+    {
+        $titulo = "Modificar categoria";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
+                $codigo = "MENUMODIFICACION";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $categoria = new Categoria();
+                $categoria->obtenerPorId($id);
+
+
+                return view('categoria.categoria-nuevo', compact('categoria', 'titulo'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }
+
 
 }

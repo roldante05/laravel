@@ -18,8 +18,9 @@ class ControladorProducto extends Controller
         
         $categoria = new Categoria();
         $aCategorias = $categoria->obtenerTodos();
+        $producto = new Producto();
         
-        return view('producto.producto-nuevo', compact('titulo', 'aCategorias'));
+        return view('producto.producto-nuevo', compact('titulo', 'aCategorias', 'producto'));
     } 
 
     public function index()
@@ -116,6 +117,28 @@ class ControladorProducto extends Controller
 
         return view('producto.producto-nuevo', compact('msg', 'producto', 'titulo')) . '?id=' . $producto->idproducto;
 
+    }
+
+    public function editar($id)
+    {
+        $titulo = "Modificar producto";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
+                $codigo = "MENUMODIFICACION";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $producto = new Producto();
+                $producto->obtenerPorId($id);        
+                $categoria = new Categoria();
+                $aCategorias = $categoria->obtenerTodos();
+
+
+                return view('producto.producto-nuevo', compact('producto', 'titulo','aCategorias'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
     }
 
 }

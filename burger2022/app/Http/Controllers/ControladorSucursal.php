@@ -14,7 +14,8 @@ class ControladorSucursal extends Controller
     public function nuevo()
     {
         $titulo = "Nueva Sucursal";
-                return view('sucursal.sucursal-nuevo', compact('titulo'));
+        $sucursal = new Sucursal();
+                return view('sucursal.sucursal-nuevo', compact('titulo','sucursal'));
     } 
 
     public function index()
@@ -108,6 +109,26 @@ class ControladorSucursal extends Controller
 
         return view('sucursal.sucursal-nuevo', compact('msg', 'sucursal', 'titulo')) . '?id=' . $sucursal->idsucursal;
 
+    }
+
+    public function editar($id)
+    {
+        $titulo = "Modificar sucursal";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
+                $codigo = "MENUMODIFICACION";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $sucursal = new Sucursal();
+                $sucursal->obtenerPorId($id);
+
+
+                return view('sucursal.sucursal-nuevo', compact('sucursal', 'titulo'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
     }
 
 }

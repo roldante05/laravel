@@ -48,15 +48,15 @@ if (isset($msg)) {
             <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
             <div class="form-group col-lg-6">
                 <label>Nombre: *</label>
-                <input type="text" id="txtNombre" name="txtNombre" class="form-control" value="" required>
+                <input type="text" id="txtNombre" name="txtNombre" class="form-control" value="{{$producto->nombre}}" required>
             </div>
             <div class="form-group col-lg-6">
                 <label for="txtCantidad">Cantidad: *</label>
-                <input type="number" id="txtCantidad" name="txtCantidad" class="form-control" value="" required>
+                <input type="number" id="txtCantidad" name="txtCantidad" class="form-control" value="{{$producto->cantidad}}" required>
             </div>
             <div class="form-group col-lg-6">
                 <label for="txtPrecio">Precio: *</label>
-                <input type="number" id="txtPrecio" name="txtPrecio" class="form-control" value="" required>
+                <input type="number" id="txtPrecio" name="txtPrecio" class="form-control" value="{{$producto->precio}}" required>
             </div>
             <div class="form-group col-lg-6">
                 <label>Categoria: *</label>
@@ -70,11 +70,11 @@ if (isset($msg)) {
                 </div>
                 <div class=" form-group col-lg-6">
                         <label for="txtdescripcion">Descripcion: *</label>
-                        <textarea id="txtDescripcion" name="txtDescripcion" class="form-control" required></textarea>
+                        <textarea id="txtDescripcion" name="txtDescripcion" class="form-control" required>{{$producto->descripcion}}</textarea>
             </div>
             <div class="form-group col-lg-6">
                 <label>Imagen:</label>
-                <input type="file" id="archivo" name="archivo" class="form-control-file" value="">
+                <input type="file" id="archivo" name="archivo" class="form-control-file" value="{{$producto->imagen}}">
                 <img src="" alt="">
             </div>
         </div>

@@ -48,23 +48,23 @@ if (isset($msg)) {
             <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
             <div class="form-group col-lg-6">
                 <label>Nombre: *</label>
-                <input type="text" id="txtNombre" name="txtNombre" class="form-control" value="" required>
+                <input type="text" id="txtNombre" name="txtNombre" class="form-control" value="{{$postulacion->nombre}}" required>
             </div>
             <div class="form-group col-lg-6">
                 <label>Apellido: *</label>
-                <input type="text" id="txtApellido" name="txtApellido" class="form-control" value="" required>
+                <input type="text" id="txtApellido" name="txtApellido" class="form-control" value="{{$postulacion->apellido}}" required>
             </div>
             <div class="form-group col-lg-6">
                 <label>Celular: *</label>
-                <input type="number" id="txtCelular" name="txtCelular" class="form-control" value="" require>
+                <input type="number" id="txtCelular" name="txtCelular" class="form-control" value="{{$postulacion->celular}}" require>
             </div>
             <div class="form-group col-lg-6">
                 <label>Correo: *</label>
-                <input type="txt" id="txtCorreo" name="txtCorreo" class="form-control" value="" require>
+                <input type="txt" id="txtCorreo" name="txtCorreo" class="form-control" value="{{$postulacion->correo}}" require>
             </div>
             <div class="form-group col-lg-6">
                 <label>Curriculum: *</label>
-                <input type="file" id="archivo" name="archivo">
+                <input type="file" id="archivo" name="archivo" value="{{$postulacion->imagen}}">
             </div>
     </form>
 </div>

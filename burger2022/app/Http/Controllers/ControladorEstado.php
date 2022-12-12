@@ -14,8 +14,8 @@ class ControladorEstado extends Controller
     public function nuevo()
     {
         $titulo = "Nuevo estado";
-
-        return view('estado.estado-nuevo', compact('titulo'));
+        $estado = new Estado();
+        return view('estado.estado-nuevo', compact('titulo', 'estado'));
     }
 
     public function index()
@@ -109,4 +109,26 @@ class ControladorEstado extends Controller
         return view('estado.estado-nuevo', compact('msg', 'estado', 'titulo')) . '?id=' . $estado->idestado;
 
     }
+
+    public function editar($id)
+    {
+        $titulo = "Modificar estado";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUMODIFICACION")) {
+                $codigo = "MENUMODIFICACION";
+                $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $estado = new Estado();
+                $estado->obtenerPorId($id);
+
+
+                return view('estado.estado-nuevo', compact('estado', 'titulo'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }
+
+
 }

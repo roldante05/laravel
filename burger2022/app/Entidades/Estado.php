@@ -82,11 +82,11 @@ class Estado extends Model
       {
           $request = $_REQUEST;
           $columns = array(
-              0 => 'A.idcliente',
+              0 => 'A.idestado',
               1 => 'A.nombre'
           );
           $sql = "SELECT DISTINCT
-                      A.idcliente,
+                      A.idestado,
                       A.nombre
                       FROM estados A
                   WHERE 1=1

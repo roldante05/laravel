@@ -1,6 +1,5 @@
 @extends('web.plantilla')
 @section('contenido')
-
   <!-- about section -->
 
   <section class="about_section layout_padding">
@@ -33,6 +32,7 @@
       </div>
     </div>
   </section>
+  
 
   <!-- end about section -->
 
@@ -87,6 +87,7 @@
       </div>
     </div>
   </section>
+  
 
   <!-- end client section -->
 
@@ -130,6 +131,7 @@
       </div>
     </div>
   </section>
+  
 
 @endsection
  

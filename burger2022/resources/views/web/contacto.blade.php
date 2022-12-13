@@ -46,6 +46,7 @@ $pg = "contacto"; ?>
       </div>
     </div>
   </section>
+  </div>
   <!-- end book section -->
 
 @endsection

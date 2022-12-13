@@ -10,10 +10,10 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Fast Food Restaurant
+                      Comida Rapida 
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                     Pruebe nuestras mejores comidas, tenemos de todo tipo, venga a <br> compartir en familia no se lo pierda no se va arrepentir!.
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
@@ -76,10 +76,10 @@
           </ol>
         </div>
       </div>
-
+      </div>
     </section>
     <!-- end slider section -->
-  </div>
+
 
   <!-- offer section -->
 

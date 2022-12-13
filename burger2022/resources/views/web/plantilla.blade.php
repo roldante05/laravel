@@ -35,13 +35,15 @@
 <body>
 
   <div class="hero_area">
+    @if(isset($pg) &&  $pg == 'home')
     <div class="bg-box">
       <img src="web/images/hero-bg.jpg" alt="">
     </div>
+    @endif
     <!-- header section strats -->
-    <header class="header_section">
+    <header class="header_section bg-dark">
       <div class="container">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
           <a class="navbar-brand" href="/">
             <span>
               Feane
@@ -54,7 +56,7 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
-              <li class="nav-item active">
+              <li class="nav-item ">
                 <a class="nav-link" href="/">Inicio</a>
               </li>
               <li class="nav-item">

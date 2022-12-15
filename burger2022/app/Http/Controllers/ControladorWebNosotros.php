@@ -27,10 +27,20 @@ class ControladorWebNosotros extends Controller
 
         $postulacion = new Postulacion();
         $postulacion->nombre = $nombre;
+        $postulacion->apellido = "";
         $postulacion->celular = $celular;
         $postulacion->correo = $correo;
         $postulacion->mensaje = $mensaje;
-        $postulacion->curriculum = $curriculum;
+        $postulacion->curriculum = "";
+        $postulacion->insertar();
+        return redirect('/gracias-postulacion');
+    }
+
+    public function graciasPostulacion(){
+
+        $pg = 'nosotros';
+        return view('web.gracias-postulacion', compact('pg')) ;
+
     }
 
 

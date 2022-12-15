@@ -41,7 +41,8 @@
     </div>
     @endif
     <!-- header section strats -->
-    <header class="header_section bg-dark">
+    <header class="header_section" style="background: rgb(6,6,6);
+background: linear-gradient(90deg, rgba(6,6,6,1) 50%, rgba(94,89,89,1) 100%);" >
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container">
           <a class="navbar-brand" href="/">
@@ -152,9 +153,9 @@
   <footer class="footer_section">
     <div class="container">
       <div class="row">
-      @if(isset($pg) &&  $pg != 'nosotros')
+      @if(isset($fg) &&  $fg =='all')
         @foreach($aSucursales as $sucursal )
-        <div class="col-md-4 footer-col">
+        <div class="col-md-3 footer-col">
           <div class="footer_contact">
             <h4>
               {{ $sucursal->nombre }}
@@ -207,7 +208,7 @@
       <div class="footer-info">
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a><br><br>
+          <a href="https://www.linkedin.com/in/danteroldan/">Dante Roldan</a><br><br>
           &copy; <span id="displayYear"></span> Distributed By
           <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
         </p>

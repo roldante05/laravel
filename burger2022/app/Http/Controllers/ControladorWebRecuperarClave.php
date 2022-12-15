@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Entidades\Sucursal;
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
 use Session;
 
-class ControladorWebRegistro extends Controller
+class ControladorWebRecuperarClave extends Controller
 {
     public function index()
     {
-            // $pg = 'home';
-            return view('web.nuevo-registro') ;
+            $sucursal = new Sucursal();
+            $aSucursales= $sucursal->obtenerTodos();
+            $fg = 'all';
+            return view('web.recuperar-clave',compact('fg','aSucursales')) ;
     }
 }

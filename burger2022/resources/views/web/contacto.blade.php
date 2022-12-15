@@ -1,7 +1,6 @@
 @extends('web.plantilla')
 @section('contenido')
-<?php
-$pg = "contacto"; ?>
+
   <!-- about section -->
 
   <!-- book section -->

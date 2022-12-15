@@ -13,4 +13,10 @@ class ControladorWebNosotros extends Controller
             $pg = 'nosotros';
             return view('web.nosotros', compact('pg')) ;
     }
+
+    public function enviar(){
+        
+    }
+
+
 }

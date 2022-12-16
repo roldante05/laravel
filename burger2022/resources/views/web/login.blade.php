@@ -30,7 +30,7 @@
                 <button type="submit" id="btnIngresar" name="btnIngresar" href="">Ingresar</button>
               </div>
               <div class="mt-4">
-                  <a href="/nuevo-registro">Registrarme</a>
+                  No tienes cuenta? <a href="/nuevo-registro">Registrate aquí</a>
               </div>
               <div class="">
                   <a href="/recuperar-clave">Recuperar contraseña</a>

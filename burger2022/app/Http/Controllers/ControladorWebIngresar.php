@@ -48,7 +48,7 @@ class ControladorWebIngresar extends Controller
             $msg["msg"]= "Correo o clave incorrecto";
             $msg["estado"]= "danger";
 
-            return view("web.login", compact('msg', 'aSucursales', 'pg'));
+            return view("web.mi-cuenta", compact('msg', 'aSucursales', 'pg'));
 
         }
 

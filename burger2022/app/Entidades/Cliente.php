@@ -27,7 +27,7 @@ class Cliente extends Model
         $this->correo = $request->input('txtCorreo');
         $this->dni = $request->input('txtDni');
         $this->celular = $request->input('txtCelular');
-        $this->clave = $request->input('txtClave');
+        $this->clave = password_hash($request->input('txtClave'), PASSWORD_DEFAULT);
     }
 
       public function insertar()
@@ -57,7 +57,8 @@ class Cliente extends Model
             apellido='$this->apellido',
             correo='$this->correo',
             dni='$this->dni,'
-            celular='$this->celular'
+            celular='$this->celular',
+            clave='$this->clave'
             WHERE idcliente=?";
         $affected = DB::update($sql, [$this->idcliente]);
     }

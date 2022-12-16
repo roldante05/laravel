@@ -31,6 +31,7 @@ Route::group(array('domain' => '127.0.0.1'), function () {
 
     Route::get('/ingresar', 'ControladorWebIngresar@index');
     Route::post('/ingresar', 'ControladorWebIngresar@ingresar');
+    Route::get('/salir', 'ControladorWebSalir@logout');
     
     Route::get('/nuevo-registro', 'ControladorWebRegistro@index');
     Route::post('/nuevo-registro', 'ControladorWebRegistro@enviar');

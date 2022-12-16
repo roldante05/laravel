@@ -60,31 +60,41 @@ background: linear-gradient(90deg, rgba(6,6,6,1) 50%, rgba(94,89,89,1) 100%);" >
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
-              <li class="nav-item ">
+              <li class="nav-item <?php echo isset($pg) && $pg == "home" ? "active" : "" ?> ">
                 <a class="nav-link" href="/">Inicio</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item <?php echo isset($pg) && $pg == "takeaway" ? "active" : "" ?> ">
                 <a class="nav-link" href="/takeaway">Takeaway</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item <?php echo isset($pg) && $pg == "nosotros" ? "active" : "" ?> ">
                 <a class="nav-link" href="/nosotros">Nosotros</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/contacto">Contacto</a>
               </li>
+              @if(Session::get("idcliente") > 0)
               <li class="nav-item">
                 <a class="nav-link" href="/mi-cuenta">Mi cuenta</a>
               </li>
+              @endif
             </ul>
             <div class="user_option">
-             
-              <a class="cart_link" href="#">
-              <i class="fa-solid fa-cart-shopping text-white"></i>
+            @if(Session::get("idcliente") > 0)
+              <a class="cart_link" href="/carrito">
+                <i class="fa-solid fa-cart-shopping text-white"></i>
               </a>
+              @endif
+              @if(Session::get("idcliente") > 0)
+                <a href="/salir" class="order_online">
+                  Salir
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                </a>
+                @else
               <a href="/ingresar" class="order_online">
               Ingresar
               <i class="fa fa-user" aria-hidden="true"></i> 
               </a>
+              @endif
             </div>
           </div>
         </nav>

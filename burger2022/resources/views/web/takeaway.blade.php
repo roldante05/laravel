@@ -7,10 +7,14 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Our Menu
+          Take away
         </h2>
       </div>
-      
+      @if(isset($msg))
+              <div class="alert alert-{{ $msg['estado'] }}" role="alert">
+                {{$msg["mensaje"]}}
+              </div>
+              @endif
       <ul class="filters_menu">
         <li class="active" data-filter="*">All</li>
         @foreach($aCategorias as $item)

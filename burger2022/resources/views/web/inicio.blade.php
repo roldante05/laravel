@@ -10,14 +10,14 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Comida Rapida 
+                      Roldy
                     </h1>
                     <p>
-                     Pruebe nuestras mejores comidas, tenemos de todo tipo, venga a <br> compartir en familia no se lo pierda no se va arrepentir!.
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
+                      Pruebe nuestras mejores comidas, tenemos de todo tipo, venga a <br> compartir en familia no se lo pierda no se va arrepentir!.
+                     </p>
+                      <div class="btn-box">
+                      <a href="/takeaway" class="btn1">
+                        Ordene ahora
                       </a>
                     </div>
                   </div>
@@ -31,14 +31,15 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Fast Food Restaurant
+                    Menú de comida 
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
-                    </p>
+                  Pruebe lo mejor de nuestro menú, si queres comer balanceado veni a probar nuestras hamburguesas,
+                  pizzas y papas fritas en cada bocado.
+                  </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
+                    <a href="/takeaway" class="btn1">
+                        Ordene ahora
                       </a>
                     </div>
                   </div>
@@ -52,14 +53,15 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Fast Food Restaurant
+                    Te esperamos!
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
-                    </p>
+                    Te esperamos hoy para disfrutar de nuestro delicioso menú, tambien  
+                    puedes ordenar ahora y retirar su pedido por nuestras sucursales!
+                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
+                    <a href="/takeaway" class="btn1">
+                        Ordene ahora
                       </a>
                     </div>
                   </div>

@@ -125,7 +125,7 @@ class Carrito_producto extends Model
       $sql = "DELETE FROM $this->table WHERE idcarrito_producto=?";
       $affected = DB::delete($sql, [$this->idcarrito_producto]);
   }
-
+   
    public function eliminarPorCliente($idCliente)
   {
       $sql = "DELETE A.* FROM carrito_productos A

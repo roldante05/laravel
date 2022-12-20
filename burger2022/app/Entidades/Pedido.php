@@ -41,9 +41,9 @@ class Pedido extends Model
       public function insertar()
     {
         $sql = "INSERT INTO $this->table (
-         fecha, 
+          fecha, 
           descripcion, 
-        total, 
+          total, 
           fk_idsucursal,
           fk_idcliente,
           fk_idestado 
@@ -61,12 +61,12 @@ class Pedido extends Model
 
     public function guardar() {
         $sql = "UPDATE $this->table SET
-            fecha=$this->fecha,
-            descripcion='$this->descripcion',
-            total=$this->total,
-            fk_idsucursal='$this->fk_idsucursal',
-            fk_idcliente='$this->fk_idcliente'
-            fk_idestado='$this->fk_idestado'
+                fecha='$this->fecha',
+                descripcion='$this->descripcion',
+                total=$this->total,
+                fk_idsucursal=$this->fk_idsucursal,
+                fk_idcliente=$this->fk_idcliente,
+                fk_idestado=$this->fk_idestado
             WHERE idpedido=?";
         $affected = DB::update($sql, [$this->idpedido]);
     }
@@ -82,11 +82,11 @@ class Pedido extends Model
       {
           $sql = "SELECT
                     A.idpedido,
-                    A.fecha
-                    A.descripcion
-                    A.total
-                    A.fk_idsucursal
-                    A.fk_idcliente
+                    A.fecha,
+                    A.descripcion,
+                    A.total,
+                    A.fk_idsucursal,
+                    A.fk_idcliente,
                     A.fk_idestado
                   FROM $this->table  ORDER BY idpedido";
           $lstRetorno = DB::select($sql);
@@ -184,5 +184,25 @@ class Pedido extends Model
        return $lstRetorno;
      
 }
+
+public function aprobar($idCliente) {
+    $sql = "UPDATE $this->table SET
+        fk_idestado=2
+        WHERE fk_idcliente=?";
+    $affected = DB::update($sql, [$idCliente]);
+}
+public function pendiente($idCliente) {
+    $sql = "UPDATE $this->table SET
+        fk_idestado=10
+        WHERE fk_idcliente=?";
+    $affected = DB::update($sql, [$idCliente]);
+}
+public function error($idCliente) {
+    $sql = "UPDATE $this->table SET
+        fk_idestado=11
+        WHERE fk_idcliente=?";
+    $affected = DB::update($sql, [$idCliente]);
+}
+
   
 }

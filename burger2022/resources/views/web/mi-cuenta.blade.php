@@ -40,22 +40,22 @@
                                                 <thead>
                                                       <tr>
                                                             <th>Pedido</th>
-                                                            <th>Fecha</th>
-                                                            <th>Descripción</th>
+                                                            <th class="d-none d-sm-block" >Fecha</th>
+                                                            <th >Descripción</th>
                                                             <th>Total</th>
                                                             <th>Sucursal</th>
-                                                            <th>Estado</th>
+                                                            <th class="d-none d-sm-block" >Estado</th>
                                                       </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody   >
                                                       @foreach($aPedidos as $pedido)
                                                       <tr>
                                                             <td>{{$pedido->idpedido}}</td>
-                                                            <td>{{date_format(date_create($pedido->fecha), "d/m/Y H:i")}}</td>
-                                                            <td>{{$pedido->descripcion}}</td>
-                                                            <td>${{number_format($pedido->total, 2, "," , ".")}}</td>
+                                                            <td class="d-none d-sm-block" >{{date_format(date_create($pedido->fecha), "d/m/Y H:i")}}</td>
+                                                            <td  >{{$pedido->descripcion}}</td>
+                                                            <td>${{number_format($pedido->total, 0, "," , ".")}}</td>
                                                             <td>{{$pedido->sucursal}}</td>
-                                                            <td>{{$pedido->estado}}</td>
+                                                            <td class="d-none d-sm-block" >{{$pedido->estado}}</td>
                                                       </tr>
                                                       @endforeach
                                                 </tbody>

@@ -15,18 +15,20 @@
           <div class="detail-box">
             <div class="heading_container">
               <h2>
-                We Are Feane
+                Sobre nosotros!
               </h2>
             </div>
             <p>
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-              in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-              the middle of text. All
+             Somos un restaurante Familiar, conformado por 4 personas del equipo
+             que nos apasiona lo que es la gastronomia y
+             que trabajando en familia formamos un gran equipo.
+             Como objetivo principal es sastifacer a nuestros clientes y que mejor manera
+             que con una buena hamburguesa, pizza o papas fritas!
+
             </p>
-            <a href="">
+            <!-- <a href="">
               Read More
-            </a>
+            </a> -->
           </div>
         </div>
       </div>
@@ -42,7 +44,7 @@
     <div class="container">
       <div class="mt-4 heading_container heading_center psudo_white_primary mb_45">
         <h2>
-          What Says Our Customers
+          Que dicen nuestros clientes?
         </h2>
       </div>
       <div class="carousel-wrap row ">
@@ -54,7 +56,7 @@
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
                 </p>
                 <h6>
-                  Moana Michell
+                  Rocio García
                 </h6>
                 <p>
                   magna aliqua
@@ -72,7 +74,7 @@
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
                 </p>
                 <h6>
-                  Mike Hamell
+                  Sebastian Araujo
                 </h6>
                 <p>
                   magna aliqua

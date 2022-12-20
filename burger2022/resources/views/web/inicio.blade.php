@@ -34,8 +34,8 @@
                     Menú de comida 
                     </h1>
                     <p>
-                  Pruebe lo mejor de nuestro menú, si queres comer balanceado veni a probar nuestras hamburguesas,
-                  pizzas y papas fritas en cada bocado.
+                  Pruebe lo mejor de nuestro menú, si queres comer balanceado veni a probar nuestras hamburguesas
+                  y papas fritas en cada bocado.
                   </p>
                     <div class="btn-box">
                     <a href="/takeaway" class="btn1">

@@ -22,9 +22,11 @@ class Carrito extends Model
       public function insertar()
     {
         $sql = "INSERT INTO $this->table (
-          'fk_idcliente'
-            ) VALUES (?);";
+          idcarrito,
+          fk_idcliente
+            ) VALUES (?,?);";
         $result = DB::insert($sql, [
+            $this->idcarrito,
             $this->fk_idcliente
         ]);
         return $this->idcarrito = DB::getPdo()->lastInsertId();
@@ -40,10 +42,18 @@ class Carrito extends Model
   
       public function eliminar()
       {
-          $sql = "DELETE FROM $this->table WHERE
+          $sql = "DELETE FROM pedidos WHERE
               idcarrito=?";
           $affected = DB::delete($sql, [$this->idcarrito]);
       }
+
+
+      public function eliminarPorCliente($idCliente)
+      {
+          $sql = "DELETE FROM $this->table WHERE fk_idcliente=?";
+          $affected = DB::delete($sql, [$idCliente]);
+      }
+
       public function obtenerTodos()
       {
           $sql = "SELECT

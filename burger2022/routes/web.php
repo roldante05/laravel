@@ -20,6 +20,10 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/takeaway', 'ControladorWebTakeaway@index');
     Route::post('/takeaway', 'ControladorWebTakeaway@agregarAlCarrito');
     Route::get('/carrito', 'ControladorWebCarrito@index');
+    Route::post('/carrito', 'ControladorWebCarrito@finalizarPedido');
+    Route::get('/mercado-pago/aprobado/{idCliente}', 'ControladorWebMercadoPago@aprobado');
+    Route::get('/mercado-pago/pendiente/{idCliente}', 'ControladorWebMercadoPago@pendiente');
+    Route::get('/mercado-pago/error/{idCliente}', 'ControladorWebMercadoPago@error');
 
     Route::get('/nosotros', 'ControladorWebNosotros@index');
     Route::get('/gracias-postulacion', 'ControladorWebGraciasPostulacion@index');

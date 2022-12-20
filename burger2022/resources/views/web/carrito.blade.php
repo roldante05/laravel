@@ -16,7 +16,7 @@
                         <table class="table table-hover border">
                               <thead>
                                     <tr>
-                                          <th class="lead">Imagen</th>
+                                          <th class="lead d-none d-sm-block">Imagen</th>
                                           <th class="lead">Producto</th>
                                           <th class="lead">Precio</th>
                                           <th class="lead">Cantidad</th>
@@ -29,11 +29,11 @@
                                     @foreach($aCarrito_productos as $item)
                                      <?php $subtotal = $item->precioproducto * $item->cantidad;?>
                                     <tr>
-                                          <td><img src="/files/{{ $item->imagenproducto }}" alt="" width="100" height="100" class="rounded img-thumbnail"></td>
+                                          <td class="d-none d-sm-block" ><img src="/files/{{ $item->imagenproducto }}" alt="" width="100" height="100" class="rounded img-thumbnail"></td>
                                           <td>{{ $item->nombreproducto}}</td>
-                                          <td>${{ number_format($item->precioproducto, 2, ",", ".")}}</td>
+                                          <td>${{ number_format($item->precioproducto, 0, ",", ".")}}</td>
                                           <td>{{ $item->cantidad}}</td>
-                                          <td>${{ number_format($subtotal, 2, ",", ".") }}</td>
+                                          <td>${{ number_format($subtotal, 0, ",", ".") }}</td>
                                           <td><i class="fa-solid fa-ban"></i></td>
                                     </tr>
                                     <?php $total += $subtotal;?>
@@ -59,11 +59,11 @@
                               <option value="sucursal">Pago en sucursal</option>
                         </select>
                   </div>
-                  <div class="col-6">
-                        <a href="/takeaway" class=" lead" >AGREGAR MAS PRODUCTOS</a>
+                  <div class="col-sm-6 col-8 my-sm-0 mt-sm-4 my-2">
+                        <a href="/takeaway" class="btn btn-success lead" >Agregar mas productos</a>
                   </div>
-                  <div class="col-6">
-                        <button type="submit" class=" float-right btn btn-primary lead" >FINALIZAR MI COMPRA</button>
+                  <div class="col-sm-6 col-8 my-sm-0 mt-sm-4 my-2">
+                        <button type="submit" class=" float-right btn btn-primary lead" >Finalizar mi compra</button>
                   </div>
             </div>
       </div>

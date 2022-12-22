@@ -92,16 +92,16 @@
           <div class="col-md-6  ">
             <div class="box ">
               <div class="img-box">
-                <img src="web/images/o1.jpg" alt="">
+                <img src="web/images/o11.jpg" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  Tasty Thursdays
+                  Viernes bastardo!
                 </h5>
                 <h6>
                   <span>20%</span> Off
                 </h6>
-                <a href="">
+                <a href="/takeaway">
                    Nuevo Pedido 
                   <i class="fa-solid fa-cart-shopping text-white"></i>
                 </a>
@@ -111,16 +111,16 @@
           <div class="col-md-6  ">
             <div class="box ">
               <div class="img-box">
-                <img src="web/images/o2.jpg" alt="">
+                <img src="web/images/01.jpg" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  Pizza Days
+                  Dia de papas!
                 </h5>
                 <h6>
                   <span>15%</span> Off
                 </h6>
-                <a href="">
+                <a href="/takeaway">
                   Nuevo Pedido 
                   <i class="fa-solid fa-cart-shopping text-white"></i>
                 </a>

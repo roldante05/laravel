@@ -3,11 +3,11 @@
 @section('contenido')
   <!-- food section -->
 
-  <section class="food_section layout_padding">
+  <section class="food_section layout_padding text-white "  style="background-image: url('web/images/fondo-two.jpg'); background-size:cover;" >
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Take away
+          Nuestro menú
         </h2>
       </div>
       @if(isset($msg))
@@ -66,11 +66,6 @@
           </div>
           @endforeach
         </div>
-      </div>
-      <div class="btn-box">
-        <a href="">
-          View More
-        </a>
       </div>
     </div>
   </section>

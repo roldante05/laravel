@@ -4,10 +4,10 @@
 <!-- about section -->
 
 <!-- book section -->
-<section class="book_section layout_padding">
+<section class="book_section layout_padding" style="background-image: url('web/images/fondo.jpg'); background-size:cover; " >
   <div class="container">
     <div class="heading_container">
-      <h2>
+      <h2 class="text-white" >
         Déjenos su mensaje
       </h2>
     </div>
@@ -25,7 +25,7 @@
             <div>
               <input type="email" class="form-control" placeholder="Correo electronico*" name="txtCorreo" required />
             </div>
-            <label for="txtMensaje">Mensaje*:</label>
+            <label for="txtMensaje"  class="text-white" >Mensaje*:</label>
             <textarea name="txtMensaje" id="txtMensaje" cols="38" rows="18" class="form-control" placeholder="Escribe aquí tu mensaje" required></textarea>
             <div>
             </div>

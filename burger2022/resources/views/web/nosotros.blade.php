@@ -23,7 +23,7 @@
              que nos apasiona lo que es la gastronomia y
              que trabajando en familia formamos un gran equipo.
              Como objetivo principal es sastifacer a nuestros clientes y que mejor manera
-             que con una buena hamburguesa, pizza o papas fritas!
+             que con una buena hamburguesa y papas fritas!
 
             </p>
             <!-- <a href="">
@@ -40,7 +40,7 @@
 
   <!-- client section -->
 
-  <section class="client_section layout_padding-bottom">
+  <section class="client_section layout_padding-bottom" >
     <div class="container">
       <div class="mt-4 heading_container heading_center psudo_white_primary mb_45">
         <h2>
@@ -53,8 +53,8 @@
             <div class="box">
               <div class="detail-box">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                </p>
+              Amo la hamburgesa de Roldy Bur son excelentes hamburgesas y muy buena atención al público lo super recomiendo
+              </p>
                 <h6>
                   Rocio García
                 </h6>
@@ -71,7 +71,7 @@
             <div class="box">
               <div class="detail-box">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                  Las papas de Roldy Bur son exquisitas y muy geniales, encantado de haber conocido un restaurente como esté, lo recomiendo muchisimo!.
                 </p>
                 <h6>
                   Sebastian Araujo
@@ -93,7 +93,7 @@
 
   <!-- end client section -->
 
-  <section class="book_section layout_padding-bottom">
+  <section class="book_section layout_padding-bottom"  >
     <div class="container">
       <div class="heading_container text-center">
         <h2>

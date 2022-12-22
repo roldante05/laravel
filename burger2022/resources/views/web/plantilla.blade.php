@@ -72,7 +72,7 @@ background: linear-gradient(90deg, rgba(6,6,6,1) 50%, rgba(94,89,89,1) 100%);">
               <li class="nav-item <?php echo isset($pg) && $pg == "nosotros" ? "active" : "" ?> ">
                 <a class="nav-link" href="/nosotros">Nosotros</a>
               </li>
-              <li class="nav-item" <?php echo isset($pg) && $pg == "contacto" ? "active" : "" ?> ">
+              <li class="nav-item <?php echo isset($pg) && $pg == "contacto" ? "active" : "" ?> ">
                 <a class="nav-link" href="/contacto">Contacto</a>
               </li>
             @if(Session::get("idcliente") > 0)

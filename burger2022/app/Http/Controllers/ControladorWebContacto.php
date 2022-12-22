@@ -14,10 +14,11 @@ class ControladorWebContacto extends Controller
 {
     public function index()
     {
-            $fg= 'all';
+            $fg = 'all';
+            $pg = 'contacto';
             $sucursal = new Sucursal();
             $aSucursales= $sucursal->obtenerTodos();
-            return view('web.contacto',compact('fg', 'aSucursales')) ;
+            return view('web.contacto',compact('pg','fg', 'aSucursales')) ;
     }
 
     public function enviar(Request $request){
